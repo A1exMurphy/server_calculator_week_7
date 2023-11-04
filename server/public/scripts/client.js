@@ -9,6 +9,7 @@ function onReady() {
 }
 onReady //we want all calculations to display upon page refresh
 
+
         //I need a GET route right away in order to call all calculations w/i onReady
 function getCalculations() {
     axios({
@@ -21,9 +22,26 @@ function getCalculations() {
     )
 }
 
+        //I need a function to determine the operator
+        //ask about using class with event instead
+function getOperator(event) {
+    event.preventDefault();
+    let operator = document.getElementsByClassName(`operator`).value
+    return operator;
+    console.log(operator);
+}
         //I need a function to collect inputs into an object
-function createInputsObject() {
+function createInputsObject(event) {
     console.log(`new object for calculation`);
+    event.preventDefault()
+    let firstNum = document.getElementById(`firstNum`).value
+    let secondNum = document.getElementById(`secondNum`).value
+    let newInputsObject = {
+        numOne: firstNum,
+        numTwo: secondNum,
+        operator: operator,
+    }
+    return newInputsObject;
 }
 
         //I need a function to clear the input fields

@@ -14,6 +14,12 @@ let calculations = [{
   result: 0,
 }]
 
+// I need a function to insert calculations into the html
+function insertCalculations() {
+  for (const calculation of calculations) {
+    
+  }
+}
 
 // Here's a wonderful place to make some routes:
 
