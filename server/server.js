@@ -15,9 +15,15 @@ let calculations = [{
 }]
 
 // I need a function to insert calculations into the html
-function insertCalculations() {
-  for (const calculation of calculations) {
-    let calulation = 
+// use a switch, I think probably
+function insertCalculations(calculations) {
+  switch (resultingTotal) {
+    case value:
+      
+      break;
+  
+    default:
+      break;
   }
 }
 
