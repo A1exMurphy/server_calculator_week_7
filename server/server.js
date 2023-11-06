@@ -17,7 +17,7 @@ let calculations = [{
 // I need a function to insert calculations into the html
 function insertCalculations() {
   for (const calculation of calculations) {
-    
+    let calulation = 
   }
 }
 
@@ -29,7 +29,12 @@ app.get(`/calculations`, (req, res) => {
 });
 
 // POST /calculations
-
+app.post('calculations', (req, res) => {
+  let newCalculation = req.body;
+  calculations.push(newCalculation);
+  console.log(calculations);
+  res.sendStatus(201)
+})
 
 // PLEASE DO NOT MODIFY ANY CODE BELOW THESE BEARS:
 // 🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸
