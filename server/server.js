@@ -33,7 +33,7 @@ function insertCalculations(newCalculation) {
 // GET /calculations
 app.get(`/calculations`, (req, res) => {
   console.log(`server recieve GET route`)
-  res.send({calculations})
+  res.send(calculations)
   // console.log(calculations)
 });
 
