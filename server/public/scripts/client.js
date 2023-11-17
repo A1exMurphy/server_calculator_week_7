@@ -3,6 +3,8 @@
 console.log('client.js is sourced!');
 
 let operator = ""
+
+onReady();
         //lets get a function that sets our initial state upon the DOM
 function onReady() {
     console.log (`now we're cookin'`);
@@ -13,14 +15,24 @@ function onReady() {
 
         //I need a GET route right away in order to call all calculations w/i onReady
 function getCalculations() {
+    console.log(`In GET route`)
     axios({
         method: `GET`,
-        url: `/calculations`,
+        url: `/calculations`
     }).then((response) => {
-    console.log(response.body)
-    let calculations = response.body.calculations
+    console.log(response.data, `calculations array coming from server`)
+    let calculations = response.data.calculations
     // let resultsHistory = document.getElementById(`resultsHistory`)
-    document.getElementById(`resultsHistory`).innerHTML = calculations
+
+    for(result of calculations) {
+        console.log(result, `is this a property of the object`)
+    document.getElementById(`resultsHistory`).innerHTML +=
+    `
+    <li>${result.numOne}${result.operator}${result.numTwo}=${result.result}
+    </li>
+    `
+    console.log(document.getElementById(`resultsHistory`))
+    }
 })
 }
 

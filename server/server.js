@@ -12,8 +12,14 @@ let calculations = [{
   numTwo: 0,
   operator: '+',
   result: 0,
-}]
-
+},
+  {
+    numOne: 1,
+    numTwo: 2,
+    operator: '*',
+    result: 2
+  }]
+console.log(calculations, `calculations in the server`)
 // I need a function to insert calculations into the html
 // use a switch, I think probably
 function insertCalculations(calculations) {
@@ -31,7 +37,9 @@ function insertCalculations(calculations) {
 
 // GET /calculations
 app.get(`/calculations`, (req, res) => {
+  console.log(`server recieve GET route`)
   res.send({calculations})
+  console.log(calculations)
 });
 
 // POST /calculations
