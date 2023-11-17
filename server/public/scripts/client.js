@@ -20,19 +20,16 @@ function getCalculations() {
         method: `GET`,
         url: `/calculations`
     }).then((response) => {
-    console.log(response.data, `calculations array coming from server`)
-    let calculations = response.data.calculations
-    // let resultsHistory = document.getElementById(`resultsHistory`)
 
-    for(result of calculations) {
-        console.log(result, `is this a property of the object`)
-    document.getElementById(`resultsHistory`).innerHTML +=
-    `
-    <li>${result.numOne}${result.operator}${result.numTwo}=${result.result}
-    </li>
-    `
-    console.log(document.getElementById(`resultsHistory`))
-    }
+        let calculations = response.data.calculations
+
+            for(result of calculations) {
+            document.getElementById(`resultHistory`).innerHTML +=
+            `
+            <li>${result.numOne}${result.operator}${result.numTwo}=${result.result}
+            </li>
+            `
+            }
 })
 }
 
@@ -57,6 +54,7 @@ function createInputsObject(event) {
         operator: operator,
     }
     requestCalculation(newInputsObject)
+    console.log(newInputsObject)
 }
 
         //I need a function to clear the input fields
@@ -66,6 +64,7 @@ function resetInputs() {
 
         //I need a function to POST InputsObject to server
 function requestCalculation(newInputsObject) {
+    console.log(`in POST route`)
     axios({
         method: `POST`,
         url: `/calculations`,
@@ -73,6 +72,6 @@ function requestCalculation(newInputsObject) {
     }).then((response) => {
         console.log(`calculate this`, response.data)
         getCalculations()
-        render//insert function for DOM update(newCalculation);
+        // render//insert function for DOM update(newCalculation);
     })
 }

@@ -19,18 +19,15 @@ let calculations = [{
     operator: '*',
     result: 2
   }]
-console.log(calculations, `calculations in the server`)
+
 // I need a function to insert calculations into the html
 // use a switch, I think probably
 function insertCalculations(calculations) {
-  switch (resultingTotal) {
-    case value:
-      
-      break;
-  
-    default:
-      break;
-  }
+    for(resolve of calculations) {
+      console.log(resolve, `this should be one calculations object`)
+        resolve.result = (resolve.numOne,resolve.operator,resolve.numTwo)
+    }
+        return calculations;
 }
 
 // Here's a wonderful place to make some routes:
@@ -38,12 +35,14 @@ function insertCalculations(calculations) {
 // GET /calculations
 app.get(`/calculations`, (req, res) => {
   console.log(`server recieve GET route`)
+  insertCalculations(calculations);
   res.send({calculations})
   console.log(calculations)
 });
 
 // POST /calculations
-app.post('calculations', (req, res) => {
+app.post('/calculations', (req, res) => {
+
   let newCalculation = req.body;
   calculations.push(newCalculation);
   console.log(calculations);
