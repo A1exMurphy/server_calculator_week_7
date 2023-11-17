@@ -7,18 +7,7 @@ app.use(express.static('server/public'));
 
 // Global variable that will contain all of the
 // calculation objects:
-let calculations = [{
-  numOne: 0,
-  numTwo: 0,
-  operator: '+',
-  result: 0,
-},
-  {
-    numOne: 1,
-    numTwo: 2,
-    operator: '*',
-    result: 2
-  }]
+let calculations = []
 
 // I need a function to insert calculations into the html
 // use a switch, I think probably
@@ -35,7 +24,7 @@ function insertCalculations(newCalculation) {
 
        
         // console.log(newCalculation)
-        calculations.push(newCalculation);
+        calculations.unshift(newCalculation);
         return calculations;
 }
 

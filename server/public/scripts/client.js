@@ -72,12 +72,20 @@ function requestCalculation(newInputsObject) {
 
 function renderCalculations(calculations) {
         document.getElementById(`resultHistory`).innerHTML = "";
+        document.getElementById(`recentResult`).innerHTML = "";
 
+            if(calculations[0] != undefined) {
+            document.getElementById(`recentResult`).innerHTML +=
+                `
+                <li>${calculations[0].numOne}${calculations[0].operator}${calculations[0].numTwo}=${calculations[0].result}
+                </li>
+                `
+            };
                 for(result of calculations) {
             document.getElementById(`resultHistory`).innerHTML +=
-            `
-            <li>${result.numOne}${result.operator}${result.numTwo}=${result.result}
-            </li>
-            `
+                `
+                <li>${result.numOne}${result.operator}${result.numTwo}=${result.result}
+                </li>
+                `
             }
 }
