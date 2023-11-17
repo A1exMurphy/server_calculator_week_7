@@ -3,7 +3,6 @@
 console.log('client.js is sourced!');
 
 let operator = ""
-console.log(10/2)
 onReady();
         //lets get a function that sets our initial state upon the DOM
 function onReady() {
@@ -20,8 +19,8 @@ function getCalculations() {
         method: `GET`,
         url: `/calculations`
     }).then((response) => {
-        console.log(response.data.calculations)
-        let calculations = response.data.calculations
+        console.log(response.data)
+        let calculations = response.data
         renderCalculations(calculations);
 
 })
@@ -74,14 +73,17 @@ function renderCalculations(calculations) {
         document.getElementById(`resultHistory`).innerHTML = "";
         document.getElementById(`recentResult`).innerHTML = "";
 
-            if(calculations[0] != undefined) {
+            if(calculations[calculations.length-1] != undefined) {
             document.getElementById(`recentResult`).innerHTML +=
                 `
-                <li>${calculations[0].numOne}${calculations[0].operator}${calculations[0].numTwo}=${calculations[0].result}
+                <li>${calculations[calculations.length-1].numOne}${calculations[calculations.length-1].operator}${calculations[calculations.length-1].numTwo}=${calculations[calculations.length-1].result}
                 </li>
                 `
-            };
-                for(result of calculations) {
+            } else {
+                document.getElementById(`recentResult`).innerHTML += ""
+            }
+            
+            for(result of calculations) {
             document.getElementById(`resultHistory`).innerHTML +=
                 `
                 <li>${result.numOne}${result.operator}${result.numTwo}=${result.result}
@@ -89,3 +91,10 @@ function renderCalculations(calculations) {
                 `
             }
 }
+
+function clear(event) {
+    event.preventDefault;
+    document.getElementById(`firstNum`).innerHTML = "";
+    document.getElementById(`secondNum`).innerHTML = "";
+    return true
+};

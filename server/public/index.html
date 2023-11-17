@@ -17,17 +17,20 @@
       <button class="operator" id="divide" onclick="getOperator(event, '/')" >/</button>
       <input id="secondNum" placeholder="Second Number">
       <button id="equals" onclick="createInputsObject(event)">=</button>
-      <button id="clear">C</button>
+      <button id="clear" onclick="clear(event)">C</button>
     </form>
 
     <section data-testid="recentResult">
-      <ul id="recentResult">
+      <h2 id="recentResult">
 
-      </ul>
+      </h2>
       <!-- The most recent calculation result goes here. -->
     </section>
 
-    <section id="resultHistory" data-testid="resultHistory">
+    <section data-testid="resultHistory">
+      <ul id="resultHistory">
+
+      </ul>
       <!-- The list of calculation results goes here. -->
     </section>
   </body>
