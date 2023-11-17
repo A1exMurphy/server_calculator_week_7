@@ -22,14 +22,8 @@ function getCalculations() {
     }).then((response) => {
 
         let calculations = response.data.calculations
+        renderCalculations(calculations);
 
-            for(result of calculations) {
-            document.getElementById(`resultHistory`).innerHTML +=
-            `
-            <li>${result.numOne}${result.operator}${result.numTwo}=${result.result}
-            </li>
-            `
-            }
 })
 }
 
@@ -74,4 +68,16 @@ function requestCalculation(newInputsObject) {
         getCalculations()
         // render//insert function for DOM update(newCalculation);
     })
+}
+
+function renderCalculations(calculations) {
+        document.getElementById(`resultHistory`).innerHTML = "";
+
+                for(result of calculations) {
+            document.getElementById(`resultHistory`).innerHTML +=
+            `
+            <li>${result.numOne}${result.operator}${result.numTwo}=${result.result}
+            </li>
+            `
+            }
 }

@@ -22,11 +22,10 @@ let calculations = [{
 
 // I need a function to insert calculations into the html
 // use a switch, I think probably
-function insertCalculations(calculations) {
-    for(resolve of calculations) {
-      console.log(resolve, `this should be one calculations object`)
-        resolve.result = (resolve.numOne,resolve.operator,resolve.numTwo)
-    }
+function insertCalculations(newCalculation) {
+
+        newCalculation.result = (newCalculation.numOne,newCalculation.operator,newCalculation.numTwo)
+        calculations.push(newCalculation);
         return calculations;
 }
 
@@ -35,16 +34,16 @@ function insertCalculations(calculations) {
 // GET /calculations
 app.get(`/calculations`, (req, res) => {
   console.log(`server recieve GET route`)
-  insertCalculations(calculations);
   res.send({calculations})
   console.log(calculations)
 });
 
 // POST /calculations
 app.post('/calculations', (req, res) => {
-
+  console.log(`server POST request`);
   let newCalculation = req.body;
-  calculations.push(newCalculation);
+  insertCalculations(newCalculation);
+
   console.log(calculations);
   res.sendStatus(201)
 })
