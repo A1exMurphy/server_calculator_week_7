@@ -23,8 +23,18 @@ let calculations = [{
 // I need a function to insert calculations into the html
 // use a switch, I think probably
 function insertCalculations(newCalculation) {
+  
+    if(newCalculation.operator === '+') {
+      newCalculation.result = (newCalculation.numOne + newCalculation.numTwo)};
+    if(newCalculation.operator === '-') {
+      newCalculation.result = (newCalculation.numOne - newCalculation.numTwo)};
+    if(newCalculation.operator === '*') {
+      newCalculation.result = (newCalculation.numOne * newCalculation.numTwo)};
+    if(newCalculation.operator === '/') {
+      newCalculation.result = (newCalculation.numOne / newCalculation.numTwo)};
 
-        newCalculation.result = (newCalculation.numOne,newCalculation.operator,newCalculation.numTwo)
+       
+        // console.log(newCalculation)
         calculations.push(newCalculation);
         return calculations;
 }
@@ -35,7 +45,7 @@ function insertCalculations(newCalculation) {
 app.get(`/calculations`, (req, res) => {
   console.log(`server recieve GET route`)
   res.send({calculations})
-  console.log(calculations)
+  // console.log(calculations)
 });
 
 // POST /calculations
@@ -44,7 +54,7 @@ app.post('/calculations', (req, res) => {
   let newCalculation = req.body;
   insertCalculations(newCalculation);
 
-  console.log(calculations);
+  // console.log(calculations);
   res.sendStatus(201)
 })
 

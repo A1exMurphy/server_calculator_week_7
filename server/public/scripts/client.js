@@ -3,7 +3,7 @@
 console.log('client.js is sourced!');
 
 let operator = ""
-
+console.log(10/2)
 onReady();
         //lets get a function that sets our initial state upon the DOM
 function onReady() {
@@ -20,7 +20,7 @@ function getCalculations() {
         method: `GET`,
         url: `/calculations`
     }).then((response) => {
-
+        console.log(response.data.calculations)
         let calculations = response.data.calculations
         renderCalculations(calculations);
 
