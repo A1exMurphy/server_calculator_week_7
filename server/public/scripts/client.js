@@ -46,6 +46,8 @@ function createInputsObject(event) {
         numTwo: Number(secondNum),
         operator: operator,
     }
+
+    resetInputs();
     requestCalculation(newInputsObject)
     console.log(newInputsObject)
 }
@@ -53,7 +55,9 @@ function createInputsObject(event) {
         //I need a function to clear the input fields
 function resetInputs() {
     console.log(`emptied the input fields`);
-}
+    document.getElementById(`firstNum`).value = "";
+    document.getElementById(`secondNum`).value = "";
+} 
 
         //I need a function to POST InputsObject to server
 function requestCalculation(newInputsObject) {

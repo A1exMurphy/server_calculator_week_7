@@ -20,13 +20,13 @@ let calculations = [{
 function insertCalculations(newCalculation) {
   
     if(newCalculation.operator === '+') {
-      newCalculation.result = (newCalculation.numOne + newCalculation.numTwo)};
+      newCalculation.result = Number(newCalculation.numOne + newCalculation.numTwo)};
     if(newCalculation.operator === '-') {
-      newCalculation.result = (newCalculation.numOne - newCalculation.numTwo)};
+      newCalculation.result = Number(newCalculation.numOne - newCalculation.numTwo)};
     if(newCalculation.operator === '*') {
-      newCalculation.result = (newCalculation.numOne * newCalculation.numTwo)};
+      newCalculation.result = Number(newCalculation.numOne * newCalculation.numTwo)};
     if(newCalculation.operator === '/') {
-      newCalculation.result = (newCalculation.numOne / newCalculation.numTwo)};
+      newCalculation.result = Number(newCalculation.numOne / newCalculation.numTwo)};
 
        
         // console.log(newCalculation)
